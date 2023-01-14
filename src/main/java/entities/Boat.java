@@ -4,13 +4,14 @@ import dtos.BoatDTO;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 @Entity
 @Table(name = "Boat")
 public class Boat {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_boat", nullable = false)
+    @Column(name = "idBoat", nullable = false)
     private int idBoat;
 
     @Basic(optional = false)
@@ -33,6 +34,8 @@ public class Boat {
     @Column(name = "image")
     private String image;
 
+    public Boat(){
+    }
 
     public Boat(String brand, String make, String name, String image) {
         this.brand = brand;
@@ -86,5 +89,18 @@ public class Boat {
 
     public void setIdBoat(int idBoat) {
         this.idBoat = idBoat;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Boat)) return false;
+        Boat boat = (Boat) o;
+        return getIdBoat() == boat.getIdBoat();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getIdBoat());
     }
 }

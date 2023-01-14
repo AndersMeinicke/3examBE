@@ -21,6 +21,14 @@ public class BoatDTO {
         this.name = boat.getName();
     }
 
+    public BoatDTO(int id, String brand, String make, String image, String name) {
+        this.id = id;
+        this.brand = brand;
+        this.make = make;
+        this.image = image;
+        this.name = name;
+    }
+
     public static List<BoatDTO> getBoatDTOs(List<Boat> boats) {
         List<BoatDTO> boatDTOList = new ArrayList<>();
         boats.forEach(boat -> {

@@ -15,7 +15,7 @@ public class Owner {
     @Basic(optional = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotNull
-    @Column(name = "id", nullable = false)
+    @Column(name = "idOwner", nullable = false)
     private int id;
 
     @NotNull
@@ -34,10 +34,11 @@ public class Owner {
     private int phoneNumber;
 
     @JoinTable(name = "Owner_Boat", joinColumns = {
-            @JoinColumn(name = "id", referencedColumnName = "idOwner")}, inverseJoinColumns = {
-            @JoinColumn(name = "id_boat", referencedColumnName = "idBoat")})
+            @JoinColumn(name = "idOwner", referencedColumnName = "idOwner")}, inverseJoinColumns = {
+            @JoinColumn(name = "idBoat", referencedColumnName = "idBoat")})
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
     private List<Boat> boatList = new ArrayList<>();
+
 
 
 
