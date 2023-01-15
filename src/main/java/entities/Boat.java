@@ -42,6 +42,7 @@ public class Boat {
             joinColumns = @JoinColumn(name = "idBoat"),
             inverseJoinColumns = @JoinColumn(name = "idOwner"))
     private List<Owner> owners = new ArrayList<>();
+
 */
 
     @OneToMany(mappedBy = "boatIdboat")
