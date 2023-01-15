@@ -2,38 +2,40 @@ package entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "Harbour")
 public class Harbour {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_harbour", nullable = false)
-    private int idHarbour;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idHarbour", nullable = false)
+    private Integer id;
 
-
-    @Basic(optional = false)
+    @Size(max = 45)
     @NotNull
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, length = 45)
     private String name;
 
-    @Basic(optional = false)
+    @Size(max = 45)
     @NotNull
-    @Column(name = "address")
+    @Column(name = "address", nullable = false, length = 45)
     private String address;
 
-    @Basic(optional = false)
     @NotNull
-    @Column(name = "capacity")
-    private int capacity;
+    @Column(name = "capacity", nullable = false)
+    private Integer capacity;
 
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "Boat_idBoat", nullable = false)
+    private Boat boatIdboat;
 
-    public int getIdHarbour() {
-        return idHarbour;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdHarbour(int idHarbour) {
-        this.idHarbour = idHarbour;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -52,11 +54,20 @@ public class Harbour {
         this.address = address;
     }
 
-    public int getCapacity() {
+    public Integer getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
+    public void setCapacity(Integer capacity) {
         this.capacity = capacity;
     }
+
+    public Boat getBoatIdboat() {
+        return boatIdboat;
+    }
+
+    public void setBoatIdboat(Boat boatIdboat) {
+        this.boatIdboat = boatIdboat;
+    }
+
 }

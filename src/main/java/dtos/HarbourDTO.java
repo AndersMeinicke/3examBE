@@ -11,7 +11,7 @@ public class HarbourDTO {
     private int capacity;
 
     public HarbourDTO(Harbour harbour){
-        this.id = harbour.getIdHarbour();
+        this.id = harbour.getId();
         this.name = harbour.getName();
         this.address = harbour.getAddress();
         this.capacity = harbour.getCapacity();

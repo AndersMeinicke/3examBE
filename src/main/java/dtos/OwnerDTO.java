@@ -6,6 +6,7 @@ import entities.Owner;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class OwnerDTO {
     private int id;
@@ -16,10 +17,10 @@ public class OwnerDTO {
 
     public OwnerDTO(Owner owner) {
         this.id = owner.getId();
-        this.ownerName = owner.getOwnername();
+        this.ownerName = owner.getName();
         this.address = owner.getAddress();
-        this.phoneNumber = owner.getPhoneNumber();
-        this.boats = owner.getBoatList();
+        this.phoneNumber = owner.getPhone();
+        this.boats = owner.getBoats();
     }
 
     public static List<OwnerDTO> getOwnerDTOs(List<Owner> owners) {
@@ -64,7 +65,7 @@ public class OwnerDTO {
     }
 
     public List<Boat> getBoats() {
-        return boats;
+        return (List<Boat>) boats;
     }
 
     public void setBoats(List<Boat> boats) {

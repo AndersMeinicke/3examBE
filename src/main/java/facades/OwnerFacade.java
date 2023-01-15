@@ -1,8 +1,8 @@
 package facades;
 
-import dtos.BoatDTO;
 import dtos.OwnerDTO;
 import entities.Owner;
+import errorhandling.API_Exception;
 import javassist.NotFoundException;
 
 import javax.persistence.EntityManager;
@@ -52,4 +52,19 @@ public class OwnerFacade {
             em.close();
         }
     }
+
+    public OwnerDTO getOwnerById(int id) throws API_Exception {
+        EntityManager em = getEntityManager();
+
+        Owner owner = em.find(Owner.class, id);
+        if (owner == null)
+            throw new API_Exception("There's no user with that id", 404);
+        em.close();
+        return new OwnerDTO(owner);
+    }
+
+
+
+
+
 }

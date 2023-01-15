@@ -2,6 +2,7 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import errorhandling.API_Exception;
 import facades.OwnerFacade;
 import javassist.NotFoundException;
 import utils.EMF_Creator;
@@ -26,6 +27,11 @@ public class OwnerResource {
     public Response getAll() throws NotFoundException {
         return Response.ok().entity(GSON.toJson(FACADE.getAllOwners())).build();
     }
-
+    @GET
+    @Path("/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getUser(@PathParam("id") int id) throws API_Exception {
+        return Response.ok().entity(GSON.toJson(FACADE.getOwnerById(id))).build();
+    }
 
 }

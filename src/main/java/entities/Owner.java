@@ -2,88 +2,90 @@ package entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
+import java.io.IOException;
 
 @Entity
-@NamedQuery(name = "Owner.deleAllRows", query = "Delete from Owner")
-@Table(name = "Owner")
 public class Owner {
-
-
     @Id
-    @Basic(optional = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idOwner", nullable = false)
-    private int id;
+    private Integer id;
 
+    @Size(max = 45)
+    @Column(name = "name", length = 45)
+    private String name;
+
+    @Size(max = 45)
     @NotNull
-    @Column(name = "name")
-    private String Ownername;
+    @Column(name = "address", nullable = false, length = 45)
+    private String address;
 
-
-    @Basic(optional = false)
+    @Size(max = 45)
     @NotNull
-    @Column(name = "address")
-    private String Address;
-
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "phone")
-    private int phoneNumber;
-
-    @JoinTable(name = "Owner_Boat", joinColumns = {
-            @JoinColumn(name = "idOwner", referencedColumnName = "idOwner")}, inverseJoinColumns = {
-            @JoinColumn(name = "idBoat", referencedColumnName = "idBoat")})
-    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    private List<Boat> boatList = new ArrayList<>();
+    @Column(name = "phone", nullable = false, length = 45)
+    private int phone;
 
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "Owner_Boat",
+            joinColumns = @JoinColumn(name = "idOwner"),
+            inverseJoinColumns = @JoinColumn(name = "idBoat"))
+    private List<Boat> boats = new ArrayList<>();
 
-
-
-    public void addBoat( Boat ownerBoat){
-        boatList.add(ownerBoat);
+    public Owner() {
     }
 
-    public String getOwnername() {
-        return Ownername;
+    public Owner(Integer id, String name, String address, int phone, List<Boat> boats) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.boats = boats;
     }
 
-    public void setOwnername(String ownername) {
-        Ownername = ownername;
-    }
-
-    public String getAddress() {
-        return Address;
-    }
-
-    public void setAddress(String address) {
-        Address = address;
-    }
-
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public List<Boat> getBoatList() {
-        return boatList;
-    }
-
-    public void setBoatList(List<Boat> boatList) {
-        this.boatList = boatList;
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
+
+    public List<Boat> getBoats() {
+        return boats;
+    }
+
+    public void setBoats(List<Boat> boats) {
+        this.boats = boats;
+    }
+
 }

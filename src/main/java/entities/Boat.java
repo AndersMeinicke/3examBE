@@ -1,54 +1,71 @@
 package entities;
 
-import dtos.BoatDTO;
-
 import javax.persistence.*;
+import javax.persistence.criteria.Fetch;
 import javax.validation.constraints.NotNull;
-import java.util.Objects;
+import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
 
 @Entity
-@Table(name = "Boat")
 public class Boat {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idBoat", nullable = false)
-    private int idBoat;
+    private Integer id;
 
-    @Basic(optional = false)
+    @Size(max = 45)
     @NotNull
-    @Column(name = "brand")
+    @Column(name = "brand", nullable = false, length = 45)
     private String brand;
 
-    @Basic(optional = false)
+    @Size(max = 45)
     @NotNull
-    @Column(name = "make")
+    @Column(name = "make", nullable = false, length = 45)
     private String make;
 
-    @Basic(optional = false)
+    @Size(max = 45)
     @NotNull
-    @Column(name = "name")
+    @Column(name = "name", nullable = false, length = 45)
     private String name;
 
-    @Basic(optional = false)
+    @Size(max = 45)
     @NotNull
-    @Column(name = "image")
+    @Column(name = "image", nullable = false, length = 45)
     private String image;
 
-    public Boat(){
+    /*@ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "Owner_Boat",
+            joinColumns = @JoinColumn(name = "idBoat"),
+            inverseJoinColumns = @JoinColumn(name = "idOwner"))
+    private List<Owner> owners = new ArrayList<>();
+*/
+
+    @OneToMany(mappedBy = "boatIdboat")
+    private List<Harbour> harbours = new ArrayList<>();
+
+    public Boat() {
     }
 
-    public Boat(String brand, String make, String name, String image) {
+    public Boat(Integer id, String brand, String make, String name, String image, List<Owner> owners, List<Harbour> harbours) {
+        this.id = id;
         this.brand = brand;
         this.make = make;
         this.name = name;
         this.image = image;
+        //this.owners = owners;
+        this.harbours = harbours;
     }
-    public Boat(BoatDTO boatDTO){
-        this.idBoat = boatDTO.getId();
-        this.brand = boatDTO.getBrand();
-        this.make = boatDTO.getMake();
-        this.name = boatDTO.getName();
-        this.image = boatDTO.getImage();
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getBrand() {
@@ -83,24 +100,20 @@ public class Boat {
         this.image = image;
     }
 
-    public int getIdBoat() {
-        return idBoat;
+    /*public List<Owner> getOwners() {
+        return owners;
     }
 
-    public void setIdBoat(int idBoat) {
-        this.idBoat = idBoat;
+    public void setOwners(List<Owner> owners) {
+        this.owners = owners;
+    }
+*/
+    public List<Harbour> getHarbours() {
+        return harbours;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Boat)) return false;
-        Boat boat = (Boat) o;
-        return getIdBoat() == boat.getIdBoat();
+    public void setHarbours(List<Harbour> harbours) {
+        this.harbours = harbours;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getIdBoat());
-    }
 }
