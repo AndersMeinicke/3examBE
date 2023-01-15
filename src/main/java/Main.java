@@ -22,7 +22,7 @@ public class Main {
         List RoleList = new ArrayList<>();
         RoleList.add(role);
 
-        User user = new User("shawty","test123",RoleList);
+        User user = new User("Oliver","test123",RoleList);
 
         FACADE.createUser(user);
     }
