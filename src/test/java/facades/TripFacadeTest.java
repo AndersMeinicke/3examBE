@@ -26,6 +26,7 @@ public class TripFacadeTest {
     private static TripFacade facade;
     Trip trip1;
     Trip trip2;
+
     List<Traveller> travellers = new ArrayList<>();
     Guide guide = new Guide("Male","1999","Energisk","Shuda");
     @BeforeAll
