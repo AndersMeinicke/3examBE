@@ -48,7 +48,7 @@ public class TripFacade {
         try {
             TypedQuery<Trip> query = em.createQuery("SELECT t FROM Trip t", Trip.class);
             if (query == null){
-                throw new NotFoundException("Can't find any owners)");
+                throw new NotFoundException("Can't find any trips)");
             }
             List<Trip> trips = query.getResultList();
             return TripDTO.getTripDTOs(trips);

@@ -27,7 +27,7 @@ public class Main {
 
         User user = new User("Oliver","test123",RoleList);
 
-        Guide guide = new Guide("male","1999","Great guide","kjawkjdw");
+        Guide guide = new Guide("alien","3999","Great guide","nyan-cat");
 
         //FACADE.createUser(user);
         GFACADE.createGuide(guide);

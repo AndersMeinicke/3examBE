@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "Table")
 @NamedQuery(name = "Trip.deleteAllRows", query = "DELETE from Trip")
 public class Trip {
     @Id()
