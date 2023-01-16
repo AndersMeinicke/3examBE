@@ -1,11 +1,7 @@
 package facades;
 
-import dtos.OwnerDTO;
 import dtos.TripDTO;
-import dtos.UserDTO;
-import entities.Owner;
 import entities.Trip;
-import entities.User;
 import errorhandling.API_Exception;
 import javassist.NotFoundException;
 

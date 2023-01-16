@@ -3,12 +3,8 @@ package rest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import entities.Guide;
-import entities.Trip;
-import entities.User;
 import errorhandling.API_Exception;
 import facades.GuideFacade;
-import facades.OwnerFacade;
-import facades.TripFacade;
 import javassist.NotFoundException;
 import utils.EMF_Creator;
 
@@ -16,7 +12,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.awt.*;
 
 @Path("guide")
 public class GuideResource {

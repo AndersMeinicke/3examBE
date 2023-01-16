@@ -3,11 +3,8 @@ package rest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dtos.TripDTO;
-import dtos.UserDTO;
 import entities.Trip;
-import entities.User;
 import errorhandling.API_Exception;
-import facades.OwnerFacade;
 import facades.TripFacade;
 import javassist.NotFoundException;
 import utils.EMF_Creator;
@@ -17,7 +14,6 @@ import javax.persistence.EntityNotFoundException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.awt.*;
 
 @Path("trip")
 public class TripResource {

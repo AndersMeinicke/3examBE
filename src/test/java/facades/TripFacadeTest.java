@@ -27,8 +27,8 @@ public class TripFacadeTest {
     Trip trip1;
     Trip trip2;
 
-    List<Traveller> travellers = new ArrayList<>();
-    Guide guide = new Guide("Male","1999","Energisk","Shuda");
+    List<Traveller> travellers;
+    Guide guide;
     @BeforeAll
     public static void setUpClass() {
         emf = EMF_Creator.createEntityManagerFactoryForTest();
@@ -46,7 +46,8 @@ public class TripFacadeTest {
         try {
             em.getTransaction().begin();
             em.createNamedQuery("Trip.deleteAllRows").executeUpdate();
-
+            travellers = new ArrayList<>();
+            guide = new Guide("Male","1999","Energisk","Shuda");
             trip1 = new Trip("19","18:00","Copenhagen","2u","Clothing",guide,travellers);
             trip2 = new Trip("18","17:00","Amsterdam","1u","Hjemmerul",guide,travellers);
             em.persist(trip1);
