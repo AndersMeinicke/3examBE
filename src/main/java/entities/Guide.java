@@ -2,19 +2,14 @@ package entities;
 
 import dtos.GuideDTO;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Guide {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idGuide", nullable = false)
     private Integer id;
 
@@ -42,7 +37,7 @@ public class Guide {
     public Guide() {
     }
 
-    public Guide(String gender, String birthYear, String profile, String imageUrl, List<Trip> trips) {
+    public Guide(String gender, String birthYear, String profile, String imageUrl) {
         this.gender = gender;
         this.birthYear = birthYear;
         this.profile = profile;
@@ -109,4 +104,27 @@ public class Guide {
 
     */
 
+    @Override
+    public String toString() {
+        return "Guide{" +
+                "id=" + id +
+                ", gender='" + gender + '\'' +
+                ", birthYear='" + birthYear + '\'' +
+                ", profile='" + profile + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Guide)) return false;
+        Guide guide = (Guide) o;
+        return Objects.equals(getId(), guide.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
 }

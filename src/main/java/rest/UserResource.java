@@ -43,8 +43,8 @@ public class UserResource {
         User burner = new User(userTwo.getUserName(), userTwo.getUserPass(),userTwo.getRoleList());
         User newUser = FACADE.createUser(burner);
         return Response.ok().entity(GSON.toJson(newUser)).build();
-
     }
+
     @PUT
     @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON})

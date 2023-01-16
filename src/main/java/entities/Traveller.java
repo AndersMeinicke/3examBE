@@ -39,6 +39,17 @@ public class Traveller {
             inverseJoinColumns = @JoinColumn(name = "fkidTrip"))
     private List<Trip> trips = new ArrayList<>();
 
+    @ManyToMany(mappedBy = "travellers", cascade = CascadeType.PERSIST)
+    private List<Trip> tripsNEW = new ArrayList<>();
+
+    public List<Trip> getTripsNEW() {
+        return tripsNEW;
+    }
+
+    public void setTripsNEW(List<Trip> tripsNEW) {
+        this.tripsNEW = tripsNEW;
+    }
+
     public Traveller() {
     }
 
@@ -47,7 +58,7 @@ public class Traveller {
         this.email = email;
         this.birthYear = birthYear;
         this.gender = gender;
-        this.trips = trips;
+        this.tripsNEW = trips;
     }
 
     /*public Traveller(TravellerDTO travellerDTO){
@@ -99,11 +110,11 @@ public class Traveller {
     }
 
     public List<Trip> getTrips() {
-        return trips;
+        return tripsNEW;
     }
 
     public void setTrips(List<Trip> trips) {
-        this.trips = trips;
+        this.tripsNEW = trips;
     }
 
 }

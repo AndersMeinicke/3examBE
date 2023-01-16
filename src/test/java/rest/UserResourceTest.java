@@ -2,6 +2,7 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import dtos.UserDTO;
 import entities.User;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -23,9 +24,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.core.UriBuilder;
 import java.net.URI;
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static junit.framework.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.equalTo;
 
 public class UserResourceTest {
@@ -170,7 +174,7 @@ public class UserResourceTest {
 
 
 
-/*
+
     @Test
     public void getAllUsers() throws Exception {
         List<UserDTO> userDTOs;
@@ -188,7 +192,7 @@ public class UserResourceTest {
 
     }
 
- */
+
 
 
 

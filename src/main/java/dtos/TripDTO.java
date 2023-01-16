@@ -1,6 +1,7 @@
 package dtos;
 
 import entities.Guide;
+import entities.Traveller;
 import entities.Trip;
 import entities.User;
 
@@ -26,8 +27,9 @@ public class TripDTO implements Serializable {
     @Size(max = 45)
     private final String packingList;
     private final Guide fkidGuide;
+    private List<Traveller> travellers = new ArrayList<>();
 
-    public TripDTO(Integer id, String date, String time, String location, String duration, String packingList, Guide fkidGuide) {
+    public TripDTO(Integer id, String date, String time, String location, String duration, String packingList, Guide fkidGuide, List<Traveller> travellers) {
         this.id = id;
         this.date = date;
         this.time = time;
@@ -35,6 +37,7 @@ public class TripDTO implements Serializable {
         this.duration = duration;
         this.packingList = packingList;
         this.fkidGuide = fkidGuide;
+        this.travellers = travellers;
     }
     public TripDTO(Trip trip){
         this.id = trip.getId();

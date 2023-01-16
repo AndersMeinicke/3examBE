@@ -1,7 +1,9 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import entities.Guide;
 import entities.Role;
 import entities.User;
+import facades.GuideFacade;
 import facades.UserFacade;
 import utils.EMF_Creator;
 
@@ -17,6 +19,7 @@ public class Main {
 
         EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
         UserFacade FACADE =  UserFacade.getUserFacade(EMF);
+        GuideFacade GFACADE = GuideFacade.getGuideFacade(EMF);
 
         Role role = new Role("admin");
         List RoleList = new ArrayList<>();
@@ -24,6 +27,9 @@ public class Main {
 
         User user = new User("Oliver","test123",RoleList);
 
-        FACADE.createUser(user);
+        Guide guide = new Guide("male","1999","Great guide","kjawkjdw");
+
+        //FACADE.createUser(user);
+        GFACADE.createGuide(guide);
     }
 }

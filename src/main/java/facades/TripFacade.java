@@ -2,8 +2,10 @@ package facades;
 
 import dtos.OwnerDTO;
 import dtos.TripDTO;
+import dtos.UserDTO;
 import entities.Owner;
 import entities.Trip;
+import entities.User;
 import errorhandling.API_Exception;
 import javassist.NotFoundException;
 
@@ -65,6 +67,22 @@ public class TripFacade {
         return new TripDTO(trip);
     }
 
+    public TripDTO deleteTrip(int id) throws API_Exception {
+        EntityManager em = getEntityManager();
+        Trip trip;
+        try {
+            trip = em.find(Trip.class, id);
+            if (trip == null) {
+                throw new API_Exception("Can't find a trip with the id: " + id);
+            }
+            em.getTransaction().begin();
+            em.remove(trip);
+            em.getTransaction().commit();
+            return new TripDTO(trip);
+        } finally {
+            em.close();
+        }
+    }
 
 
 

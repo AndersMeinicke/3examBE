@@ -24,9 +24,9 @@ public class TravellerDTO implements Serializable {
     private final String birthYear;
     @Size(max = 45)
     private final String gender;
-    private final List<TripDTO> trips;
+    private final List<Trip> trips;
 
-    public TravellerDTO(Integer id, String phone, String email, String birthYear, String gender, List<TripDTO> trips) {
+    public TravellerDTO(Integer id, String phone, String email, String birthYear, String gender, List<Trip> trips) {
         this.id = id;
         this.phone = phone;
         this.email = email;
@@ -41,7 +41,7 @@ public class TravellerDTO implements Serializable {
         this.email = traveller.getEmail();
         this.birthYear = traveller.getBirthYear();
         this.gender = traveller.getGender();
-        this.trips = null;
+        this.trips = traveller.getTripsNEW();
     }
 
     public static List<TravellerDTO> getTravellersDTOs(List<Traveller> travellers) {
@@ -71,7 +71,7 @@ public class TravellerDTO implements Serializable {
         return gender;
     }
 
-    public List<TripDTO> getTrips() {
+    public List<Trip> getTrips() {
         return trips;
     }
 
