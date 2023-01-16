@@ -87,21 +87,11 @@ public class TripFacadeTest {
     assertEquals(expected,actual.size());
     }
 
-
-
     @Test
-    void updateUser() {
+    void deleteTrip() throws NotFoundException, API_Exception {
+        facade.deleteTrip(trip1.getId());
+        List<TripDTO> actual = facade.getAllTrips();
+        int expected = 1;
+        assertEquals(expected,actual.size());
     }
-/*
-    @Test
-    void deleteTrip() throws API_Exception, NotFoundException {
-    int expected = 1;
-    facade.deleteTrip(10);
-    List<TripDTO> actual = facade.getAllTrips();
-
-    assertEquals(expected,actual.size());
-    }
-
- */
-
 }
