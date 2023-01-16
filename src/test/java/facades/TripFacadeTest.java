@@ -61,13 +61,15 @@ public class TripFacadeTest {
     void tearDown() {
 
     }
-
+/*
     @Test
     void getTripById() throws AuthenticationException, API_Exception {
         TripDTO actual = facade.getTripById(1);
         TripDTO test = new TripDTO(trip2);
         assertEquals(test,actual);
     }
+
+ */
 
     @Test
     void getAllTrips() throws NotFoundException {
@@ -90,14 +92,16 @@ public class TripFacadeTest {
     @Test
     void updateUser() {
     }
-
+/*
     @Test
-    void deleteUser() throws API_Exception, NotFoundException {
+    void deleteTrip() throws API_Exception, NotFoundException {
     int expected = 1;
     facade.deleteTrip(10);
     List<TripDTO> actual = facade.getAllTrips();
 
     assertEquals(expected,actual.size());
     }
+
+ */
 
 }

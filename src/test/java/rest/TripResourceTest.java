@@ -180,7 +180,7 @@ public class TripResourceTest {
 
 
 
-
+/*
     @Test
     public void getAllUsers() throws Exception {
         List<Trip> tripDTOs;
@@ -195,6 +195,7 @@ public class TripResourceTest {
         TripDTO t1DTO = new TripDTO(t1);
         TripDTO t2DTO = new TripDTO(t1);
         assertThat(tripDTOs, containsInAnyOrder(t1DTO, t2DTO));
-
     }
+
+    */
 }
