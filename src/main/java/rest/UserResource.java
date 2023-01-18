@@ -64,5 +64,12 @@ public class UserResource {
         UserDTO deleted = FACADE.deleteUser(id);
         return Response.ok().entity(GSON.toJson(deleted)).build();
     }
-
+    @GET
+    @Path("/player+{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
+    public Response becomePlayer(@PathParam("id") int id){
+        UserDTO newPlayer = FACADE.becomePlayer(id);
+        return Response.ok().entity(GSON.toJson(newPlayer)).build();
+    }
 }

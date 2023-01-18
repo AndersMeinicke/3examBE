@@ -147,5 +147,18 @@ public class UserFacade {
             em.close();
         }
     }
+    public UserDTO becomePlayer(int id) {
+        EntityManager em = getEntityManager();
+        User user;
+        try {
+            user = em.find(User.class, id);
+            em.getTransaction().begin();
+            user.addRole(new Role("player"));
+            em.getTransaction().commit();
+            return new UserDTO(user);
+        }finally {
+            em.close();
+        }
+    }
 
 }
